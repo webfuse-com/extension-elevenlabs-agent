@@ -1,0 +1,30 @@
+{
+  "type": "client",
+  "name": "navigate",
+  "description": "Navigate to a different website by URL.",
+  "disable_interruptions": false,
+  "force_pre_tool_speech": "auto",
+  "tool_call_sound": null,
+  "tool_call_sound_behavior": "auto",
+  "tool_error_handling_mode": "auto",
+  "execution_mode": "immediate",
+  "assignments": [],
+  "expects_response": true,
+  "response_timeout_secs": 15,
+  "parameters": [
+    {
+      "id": "url",
+      "type": "string",
+      "value_type": "llm_prompt",
+      "description": "URL to navigate to.",
+      "dynamic_variable": "",
+      "constant_value": "",
+      "enum": null,
+      "is_system_provided": false,
+      "required": true
+    }
+  ],
+  "dynamic_variables": {
+    "dynamic_variable_placeholders": {}
+  }
+}

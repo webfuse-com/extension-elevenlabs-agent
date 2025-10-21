@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;1,400;1,500");
+
+:root {
+    --diameter: 56px;
+    --padding: 16px;
+    --margin-top: 32px;
+    --maxsection-height: 320px;
+    --border-radius: 15px;
+    --border-radius--small: calc(var(--border-radius) / 2);
+
+    --color-bg: #ffffff;
+    --color-fg: #0b0d16;
+    --color-gray: #efefef;
+    --color-accent: #171875;
+    --color-highlight: #282a9b;
+}
+
+@keyframes recording {
+    0%, 100% {
+        background-color: #630924;
+    }
+    50% {
+        background-color: #b91647;
+    }
+}
+
+* { 
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+html {
+    font-family: "Barlow";
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--padding);
+}
+
+input {
+    padding: 0.5em 0.75em;
+    width: 100%;
+    height: 2.75em;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: transparent;
+    color: inherit;
+    border: 2px solid var(--color-gray);
+    border-radius: var(--border-radius--small);
+}
+
+input:focus {
+    border-color: var(--color-fg);
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-gray);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+section#min {
+    align-self: flex-end;
+    align-items: center;
+    width: fit-content;
+    border-radius: calc((var(--diameter) + 2 * var(--padding)) / 1.5);
+}
+
+[data-keyboard="false"] section#min {
+    margin-top: calc(-1 * var(--padding));
+}
+
+section#max {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 0;
+    opacity: 0.0;
+    pointer-events: none;
+    transition: all 300ms;
+    z-index: 2;
+}
+
+section#max::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--padding);
+    background: linear-gradient(180deg, var(--color-bg) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+section#max > .wrapper:first-of-type {
+    flex-grow: 1;
+}
+
+[data-keyboard="true"] section#max {
+    height: var(--maxsection-height);
+    opacity: 1.0;
+    pointer-events: auto;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: var(--padding);
+    padding: var(--padding);
+    height: fit-content;
+}
+
+.wrapper--column {
+    flex-direction: column;
+}
+
+#messages {
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+#messages::-webkit-scrollbar {
+    display: none;
+}
+
+#messages > .empty {
+    filter: opacity(0.75);
+}
+
+#messages > .empty:not(:first-child:last-child) {
+    display: none;
+}
+
+.message {
+    padding: 0.5em 0.75em;
+    max-width: 90%;
+    hyphens: auto;
+    font-weight: 500;
+    border-radius: 0.5em;
+    filter: opacity(0.9);
+    box-shadow: 0 2px 8px -2px #00000030;
+}
+
+.message:not(:last-of-type) {
+    font-weight: 400;
+    filter: opacity(0.8);
+}
+
+.message--ai {
+    align-self: flex-start;
+    background-color: var(--color-highlight);
+    color: var(--color-bg);
+    border-top-left-radius: 0;
+}
+
+.message--user {
+    align-self: flex-end;
+    background-color: var(--color-gray);
+    border-top-right-radius: 0;
+}
+
+.button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-fg);
+    width: var(--diameter);
+    height: var(--diameter);
+    border: none;
+    border-radius: 100%;
+    transition: all 200ms;
+}
+
+.button:hover {
+    background-color: var(--color-accent);
+}
+
+.button--adaptive {
+    padding: 0 0.75em;
+    height: 100%;
+    border-radius: var(--border-radius--small);
+}
+
+.button svg {
+    display: none;
+    width: auto;
+    height: 60%;
+}
+
+.button svg path {
+    fill: #ffffff;
+}
+
+.button--adaptive svg {
+    display: block;
+}
+
+[data-microphone="true"] #button-microphone svg:first-of-type {
+    display: block;
+}
+
+[data-microphone="false"] #button-microphone svg:last-of-type {
+    display: block;
+}
+
+[data-microphone="true"] #button-microphone {
+    animation-name: recording;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+[data-microphone="true"] #button-microphone:hover {
+    filter: brightness(0.8);
+}
+
+[data-microphone="false"] #microphone-feedback {
+    background-color: #e4e4e6;
+    animation: none;
+}
+
+[data-keyboard="false"] #button-keyboard svg:first-of-type {
+    display: block;
+}
+
+[data-keyboard="true"] #button-keyboard svg:last-of-type {
+    display: block;
+}
+
+body:not([data-connected]) .button {
+    pointer-events: none;
+    filter: opacity(0.5);
+}
+
+voice-orb {
+    margin: 8px;
+    transition: box-shadow 1s;
+}
+
+[data-speaking="true"] voice-orb {
+    filter: brightness(1.05);
+    box-shadow: 0 0 8px 0 #002aff60;
+}
