@@ -1,0 +1,18 @@
+{
+  "type": "client",
+  "name": "take_dom_snapshot",
+  "description": "Take a snapshot of the currently browsed web page. That means, serlialize its DOM to HTML in order to analyze the inherent UI.",
+  "disable_interruptions": false,
+  "force_pre_tool_speech": "auto",
+  "tool_call_sound": null,
+  "tool_call_sound_behavior": "auto",
+  "tool_error_handling_mode": "auto",
+  "execution_mode": "immediate",
+  "assignments": [],
+  "expects_response": false,
+  "response_timeout_secs": 1,
+  "parameters": [],
+  "dynamic_variables": {
+    "dynamic_variable_placeholders": {}
+  }
+}

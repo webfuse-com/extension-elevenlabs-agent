@@ -1,0 +1,18 @@
+{
+  "type": "client",
+  "name": "get_current_location",
+  "description": "Get the URL of the currently browsed web page.",
+  "disable_interruptions": false,
+  "force_pre_tool_speech": "auto",
+  "tool_call_sound": null,
+  "tool_call_sound_behavior": "auto",
+  "tool_error_handling_mode": "auto",
+  "execution_mode": "immediate",
+  "assignments": [],
+  "expects_response": true,
+  "response_timeout_secs": 7,
+  "parameters": [],
+  "dynamic_variables": {
+    "dynamic_variable_placeholders": {}
+  }
+}

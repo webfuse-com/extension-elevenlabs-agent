@@ -1,0 +1,41 @@
+{
+  "type": "client",
+  "name": "text_select",
+  "description": "Select a specific part of text in the page to emphasise it.",
+  "disable_interruptions": false,
+  "force_pre_tool_speech": "auto",
+  "tool_call_sound": null,
+  "tool_call_sound_behavior": "auto",
+  "tool_error_handling_mode": "auto",
+  "execution_mode": "immediate",
+  "assignments": [],
+  "expects_response": true,
+  "response_timeout_secs": 1,
+  "parameters": [
+    {
+      "id": "target",
+      "type": "string",
+      "value_type": "llm_prompt",
+      "description": "The CSS selector of the element to highlight.",
+      "dynamic_variable": "",
+      "constant_value": "",
+      "enum": null,
+      "is_system_provided": false,
+      "required": true
+    },
+    {
+      "id": "text",
+      "type": "string",
+      "value_type": "llm_prompt",
+      "description": "The text in the selected element to highlight.",
+      "dynamic_variable": "",
+      "constant_value": "",
+      "enum": null,
+      "is_system_provided": false,
+      "required": true
+    }
+  ],
+  "dynamic_variables": {
+    "dynamic_variable_placeholders": {}
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "private": "true",
+  "dependencies": {
+    "@elevenlabs/client": "^0.8.0"
+  }
+}

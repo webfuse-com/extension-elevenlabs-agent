@@ -1,0 +1,30 @@
+{
+  "type": "client",
+  "name": "mouse_move",
+  "description": "Move the mouse pointer to a certain pixel coordinate.",
+  "disable_interruptions": false,
+  "force_pre_tool_speech": "auto",
+  "tool_call_sound": null,
+  "tool_call_sound_behavior": "auto",
+  "tool_error_handling_mode": "auto",
+  "execution_mode": "immediate",
+  "assignments": [],
+  "expects_response": false,
+  "response_timeout_secs": 1,
+  "parameters": [
+    {
+      "id": "target",
+      "type": "string",
+      "value_type": "llm_prompt",
+      "description": "CSS selector of element to center mouse pointer over.",
+      "dynamic_variable": "",
+      "constant_value": "",
+      "enum": null,
+      "is_system_provided": false,
+      "required": true
+    }
+  ],
+  "dynamic_variables": {
+    "dynamic_variable_placeholders": {}
+  }
+}
